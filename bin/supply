@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eu
+
+build_path=$1
+cache_path=$2
+deps_path=$3
+index=$4
+
+echo "cert-buildpack"
+echo "##############"
+echo "build_path: $build_path"
+echo "cache_path: $cache_path"
+echo "deps_path: $deps_path"
+echo "index: $index"

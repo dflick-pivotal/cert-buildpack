@@ -18,7 +18,7 @@ export BUILDPACK_DIR=`dirname $(readlink -f ${BASH_SOURCE%/*})`
 output_dir=$(mktemp -d -t supplyXXX)
 
 echo "-----> Copy Certs"
-copy "$BUILDPACK_DIR/resources/open_jdk_jre/lib/security/cacerts"
 mkdir -p "$output_dir/resources/open_jdk_jre/lib/security/cacerts"
+cp "$BUILDPACK_DIR/resources/open_jdk_jre/lib/security/cacerts $output_dir/resources/open_jdk_jre/lib/security/cacerts"
 
 $output_dir/supply "$build_path" "$cache_path" "$deps_path" "$index"

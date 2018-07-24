@@ -25,7 +25,7 @@ cp $BUILDPACK_DIR/resources/open_jdk_jre/lib/security/cacert $output_dir/.
 cat > $deps_path/$index/config.yml << EOF
 name: cert-buildpack
 version: 0.1
-java_opts.system_properties: -Djavax.net.ssl.trustStore=$output_dir/cacert -Djavax.net.ssl.trustStorePassword=changeit
+java_opts.options: -Djavax.net.ssl.trustStore=$output_dir/cacert -Djavax.net.ssl.trustStorePassword=changeit
 EOF
  
 echo cert-buildpack complete

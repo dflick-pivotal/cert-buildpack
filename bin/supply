@@ -34,7 +34,7 @@ mkdir -p $PROFILED_FOLDER
 
 # Create a profile.d file
  
-addcert="~/app/.java-buildpack/open_jdk_jre/bin/keytool -import -trustcacerts -keystore ~/app/.java-buildpack/open_jdk_jre/lib/security/cacert -storepass changeit -noprompt -alias daimler -file ~/deps/0/resources/open_jdk_jre/lib/security/server.crt'
+addcert="~/app/.java-buildpack/open_jdk_jre/bin/keytool -import -trustcacerts -keystore ~/app/.java-buildpack/open_jdk_jre/lib/security/cacert -storepass changeit -noprompt -alias daimler -file ~/deps/0/resources/open_jdk_jre/lib/security/server.crt"
 echo $addcert > $PROFILED_FILE 
 echo cert-buildpack complete
 

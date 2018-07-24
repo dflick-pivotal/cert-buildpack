@@ -15,11 +15,11 @@ echo "deps_path: $deps_path"
 echo "index: $index"
 
 export BUILDPACK_DIR=`dirname $(readlink -f ${BASH_SOURCE%/*})`
-output_dir=$deps_path/$index/resources/open_jdk_jre/lib/security
+output_dir=$deps_path/$index
 
 echo "-----> Copy Certs"
 mkdir -p $output_dir
-cp $BUILDPACK_DIR/resources/open_jdk_jre/lib/security/cacert $output_dir/.
+cp $BUILDPACK_DIR/cacert $output_dir/.
 
 # Create a config.yml 
 cat > $deps_path/$index/config.yml << EOF

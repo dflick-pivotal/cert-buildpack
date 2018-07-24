@@ -19,24 +19,14 @@ output_dir=$deps_path/$index/resources/open_jdk_jre/lib/security
 
 echo "-----> Copy Certs"
 mkdir -p $output_dir
-cp $BUILDPACK_DIR/resources/open_jdk_jre/lib/security/server.crt $output_dir/.
+cp $BUILDPACK_DIR/resources/open_jdk_jre/lib/security/cacert $output_dir/.
 
 # Create a config.yml 
 cat > $deps_path/$index/config.yml << EOF
 name: cert-buildpack
 version: 0.1
+java_opts.system_properties: -Djavax.net.ssl.trustStore=$output_dir/cacert -Djavax.net.ssl.trustStorePassword=changeit
 EOF
-
-PROFILED_FOLDER=$deps_path/$index/profile.d
-PROFILED_FILE=$PROFILED_FOLDER/profile.d
-echo Creating $PROFILED_FILE
-mkdir -p $PROFILED_FOLDER
-
-# Create a profile.d file
  
-addcert="~/app/.java-buildpack/open_jdk_jre/bin/keytool -import -trustcacerts -keystore ~/app/.java-buildpack/open_jdk_jre/lib/security/cacert -storepass changeit -noprompt -alias daimler -file ~/deps/0/resources/open_jdk_jre/lib/security/server.crt"
-echo $addcert > $PROFILED_FILE 
-#flywaybin="export DEPS_IDX=$index"';export PCF_FLYWAY_BINDIR=$deps_path/$DEPS_IDX/bin'
-#echo $flywaybin > $PROFILED_FILE 
 echo cert-buildpack complete
 

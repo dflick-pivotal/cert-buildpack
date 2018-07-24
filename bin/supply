@@ -22,19 +22,21 @@ mkdir -p $output_dir
 cp $BUILDPACK_DIR/resources/open_jdk_jre/lib/security/server.crt $output_dir/.
 
 # Create a config.yml 
-#cat > $deps_path/$index/config.yml << EOF
-#name: cert-buildpack
-#version: 0.1
-#EOF
+cat > $deps_path/$index/config.yml << EOF
+name: cert-buildpack
+version: 0.1
+EOF
 
 PROFILED_FOLDER=$deps_path/$index/profile.d
 PROFILED_FILE=$PROFILED_FOLDER/profile.d
 echo Creating $PROFILED_FILE
-#mkdir -p $PROFILED_FOLDER
+mkdir -p $PROFILED_FOLDER
 
 # Create a profile.d file
  
-addcert="~/app/.java-buildpack/open_jdk_jre/bin/keytool -import -trustcacerts -keystore ~/app/.java-buildpack/open_jdk_jre/lib/security/cacert -storepass changeit -noprompt -alias daimler -file ~/deps/0/resources/open_jdk_jre/lib/security/server.crt"
+#addcert="~/app/.java-buildpack/open_jdk_jre/bin/keytool -import -trustcacerts -keystore ~/app/.java-buildpack/open_jdk_jre/lib/security/cacert -storepass changeit -noprompt -alias daimler -file ~/deps/0/resources/open_jdk_jre/lib/security/server.crt"
 #echo $addcert > $PROFILED_FILE 
+flywaybin="export DEPS_IDX=$index"';export PCF_FLYWAY_BINDIR=$deps_path/$DEPS_IDX/bin'
+echo $flywaybin > $PROFILED_FILE 
 echo cert-buildpack complete
 

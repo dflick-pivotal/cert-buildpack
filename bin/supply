@@ -19,6 +19,8 @@ output_dir=$deps_path/$index
 
 echo "-----> Copy Truststore"
 mkdir -p $output_dir
+mkdir -p $output_dir/lib
+mkdir -p $output_dir/bin
 cp $BUILDPACK_DIR/cacert $output_dir/.
 
 echo "-----> Create config.yml"

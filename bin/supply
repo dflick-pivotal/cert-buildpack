@@ -22,10 +22,10 @@ mkdir -p $output_dir
 cp $BUILDPACK_DIR/resources/open_jdk_jre/lib/security/server.crt $output_dir/.
 
 # Create a config.yml 
-cat > $deps_path/$index/config.yml << EOF
-name: cert-buildpack
-version: 0.1
-EOF
+#cat > $deps_path/$index/config.yml << EOF
+#name: cert-buildpack
+#version: 0.1
+#EOF
 
 PROFILED_FOLDER=$deps_path/$index/profile.d
 PROFILED_FILE=$PROFILED_FOLDER/profile.d

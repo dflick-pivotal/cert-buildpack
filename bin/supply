@@ -30,7 +30,7 @@ EOF
 PROFILED_FOLDER=$deps_path/$index/profile.d
 PROFILED_FILE=$PROFILED_FOLDER/profile.d
 echo Creating $PROFILED_FILE
-mkdir -p $PROFILED_FOLDER
+#mkdir -p $PROFILED_FOLDER
 
 # Create a profile.d file
  

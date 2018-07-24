@@ -17,16 +17,17 @@ echo "index: $index"
 export BUILDPACK_DIR=`dirname $(readlink -f ${BASH_SOURCE%/*})`
 output_dir=$deps_path/$index
 
-echo "-----> Copy Certs"
+echo "-----> Copy Truststore"
 mkdir -p $output_dir
 cp $BUILDPACK_DIR/cacert $output_dir/.
 
-# Create a config.yml 
+echo "-----> Create config.yml"
 cat > $deps_path/$index/config.yml << EOF
 name: cert-buildpack
 version: 0.1
 java_opts.preformatted_options: -Djavax.net.ssl.trustStore=$output_dir/cacert -Djavax.net.ssl.trustStorePassword=changeit
 EOF
  
-echo cert-buildpack complete
+echo "cert-buildpack complete"
+echo "#######################"
 
